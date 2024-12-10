@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component} from '@angular/core';
 import { animate, group, query, style, transition, trigger } from "@angular/animations";
 import { CommonModule } from "@angular/common";
-
+/*import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+*/
 export const SNACKBAR_ANIMATION_DURATION = 400;
 
 const hiddenTransform = 'translate(50%, 20%) scale(0.8)';

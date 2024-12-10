@@ -1,3 +1,3 @@
 export const environment = {
-	backendUrl: 'http://localhost:8080/backendrest-jersey/api/v1'
+	backendUrl: 'http://localhost:8080/vandiorsp/api/v1'
 }

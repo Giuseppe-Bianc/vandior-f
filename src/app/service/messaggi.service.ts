@@ -1,8 +1,9 @@
-import { ApplicationRef, ComponentRef, EmbeddedViewRef, Injectable } from '@angular/core';
+import { ApplicationRef, ComponentRef, EmbeddedViewRef, inject, Injectable } from '@angular/core';
 import { SnackbarComponent } from '../components/snackbar/snackbar.component';
+import { AppComponent } from '../app.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root', // Ensures it's available globally
 })
 export class MessaggiService {
 
@@ -10,7 +11,7 @@ export class MessaggiService {
   private componentRef?: ComponentRef<SnackbarComponent>;
   private closeTimeout?: any;
 
-  constructor(private appRef: ApplicationRef) { }
+  appRef = inject(ApplicationRef);
 
   mostraMessaggioErrore(errore: string): void {
     this.open(errore, 3000, undefined, 'var(--bs-danger)');
@@ -31,12 +32,7 @@ export class MessaggiService {
       return;
     }
 
-    const rootViewContainerRef = (this.appRef.components[0].instance as any).viewContainerRef;
-    if (!rootViewContainerRef) {
-      throw new Error('Root view container not found.');
-    }
-
-    this.componentRef = rootViewContainerRef.createComponent(SnackbarComponent);
+    this.componentRef = this.appRef.components[0].instance.vcr?.createComponent(SnackbarComponent)!;
     if (this.componentRef) {
       this.componentRef.instance.message = message;
       this.componentRef.instance.bgColor = backgroundColor ?? getComputedStyle(document.body).getPropertyValue('--bg-snackbar');

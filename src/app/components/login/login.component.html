@@ -1,16 +1,14 @@
-<div *ngIf="loginFormActive">
+<div *ngIf="lgFAct">
 	<div class="card mx-auto my-3 shadow-sm" style="max-width: 500px;">
 		<div class="card-body">
 			<div class="d-flex justify-content-between align-items-center mb-4">
 				<h3 class="card-title mb-0">Login</h3>
 				<div>
-					<button type="button" class="btn me-2"
-						[ngClass]="{'btn-secondary': loginFormActive, 'btn-primary': !loginFormActive}"
+					<button type="button" class="btn me-2" [ngClass]="{'btn-secondary': lgFAct, 'btn-primary': !lgFAct}"
 						(click)="toggleForm(true)">
 						Login
 					</button>
-					<button type="button" class="btn"
-						[ngClass]="{'btn-primary': loginFormActive, 'btn-secondary': !loginFormActive}"
+					<button type="button" class="btn me-2" [ngClass]="{'btn-primary': lgFAct, 'btn-secondary': !lgFAct}"
 						(click)="toggleForm(false)">
 						Register
 					</button>
@@ -19,19 +17,17 @@
 			<form [formGroup]="loginForm" (submit)="onSubmitLogin()">
 				<div class="mb-3">
 					<label for="email" class="form-label">Email</label>
-					<input type="email" [formControl]="loginEmailFormControl" id="email" class="form-control"
-						placeholder="a@gmail.com">
-					<div *ngIf="loginEmailFormControl.invalid && loginEmailFormControl.dirty"
-						class="form-text text-danger">
+					<input type="email" [formControl]="lgEmailFControl" id="email" class="form-control"
+						placeholder="a@gmail.com" autocomplete="email">
+					<div *ngIf="lgEmailFControl.invalid && lgEmailFControl.dirty" class="form-text text-danger">
 						il campo deve essere valido
 					</div>
 				</div>
 				<div class="mb-3">
 					<label for="password" class="form-label">Password</label>
-					<input type="password" [formControl]="loginPasswordFormControl" id="password" class="form-control"
-						placeholder="password">
-					<div *ngIf="loginPasswordFormControl.invalid && loginPasswordFormControl.dirty"
-						class="form-text text-danger">
+					<input type="password" [formControl]="lgPwordFControl" id="password" class="form-control"
+						placeholder="password" autocomplete="current-password">
+					<div *ngIf="lgPwordFControl.invalid && lgPwordFControl.dirty" class="form-text text-danger">
 						il campo deve essere valido
 					</div>
 				</div>
@@ -40,19 +36,17 @@
 		</div>
 	</div>
 </div>
-<div *ngIf="!loginFormActive">
+<div *ngIf="!lgFAct">
 	<div class="card mx-auto my-3 shadow-sm" style="max-width: 500px;">
 		<div class="card-body">
 			<div class="d-flex justify-content-between align-items-center mb-4">
 				<h3 class="card-title mb-0">Register</h3>
 				<div>
-					<button type="button" class="btn me-2"
-						[ngClass]="{'btn-secondary': loginFormActive, 'btn-primary': !loginFormActive}"
+					<button type="button" class="btn me-2" [ngClass]="{'btn-secondary': lgFAct, 'btn-primary': !lgFAct}"
 						(click)="toggleForm(true)">
 						Login
 					</button>
-					<button type="button" class="btn"
-						[ngClass]="{'btn-primary': loginFormActive, 'btn-secondary': !loginFormActive}"
+					<button type="button" class="btn me-2" [ngClass]="{'btn-primary': lgFAct, 'btn-secondary': !lgFAct}"
 						(click)="toggleForm(false)">
 						Register
 					</button>
@@ -60,36 +54,36 @@
 			</div>
 			<form [formGroup]="registerForm" (submit)="onSubmitRegister()">
 				<div class="mb-3">
-					<label for="email" class="form-label">First Name</label>
-					<!--<input type="email" [formControl]="emailFormControl" id="email" class="form-control"
-					                    placeholder="a@gmail.com">
-					                <div *ngIf="emailFormControl.invalid && emailFormControl.dirty" class="form-text text-danger">
-					                    il campo deve essere valido
-					                </div>-->
+					<label for="firstName" class="form-label">First Name</label>
+					<input type="text" [formControl]="rgFNameFControl" id="firstName" class="form-control"
+						placeholder="alec">
+					<div *ngIf="rgFNameFControl.invalid && rgFNameFControl.dirty" class="form-text text-danger">
+						il campo deve essere valido
+					</div>
 				</div>
 				<div class="mb-3">
-					<label for="email" class="form-label">Last Name</label>
-					<!--<input type="email" [formControl]="emailFormControl" id="email" class="form-control"
-					                    placeholder="a@gmail.com">
-					                <div *ngIf="emailFormControl.invalid && emailFormControl.dirty" class="form-text text-danger">
-					                    il campo deve essere valido
-					                </div>-->
+					<label for="lastName" class="form-label">Last Name</label>
+					<input type="text" [formControl]="rgLNameFControl" id="lastName" class="form-control"
+						placeholder="boldwin">
+					<div *ngIf="rgLNameFControl.invalid && rgLNameFControl.dirty" class="form-text text-danger">
+						il campo deve essere valido
+					</div>
 				</div>
 				<div class="mb-3">
 					<label for="email" class="form-label">Email</label>
-					<!--<input type="email" [formControl]="emailFormControl" id="email" class="form-control"
-	                    placeholder="a@gmail.com">
-	                <div *ngIf="emailFormControl.invalid && emailFormControl.dirty" class="form-text text-danger">
-	                    il campo deve essere valido
-	                </div>-->
+					<input type="email" [formControl]="rgEmailFControl" id="email" class="form-control"
+						placeholder="a@gmail.com">
+					<div *ngIf="rgEmailFControl.invalid && rgEmailFControl.dirty" class="form-text text-danger">
+						il campo deve essere valido
+					</div>
 				</div>
 				<div class="mb-3">
 					<label for="password" class="form-label">Password</label>
-					<!--<input type="password" [formControl]="passwordFormControl" id="password" class="form-control"
-	                    placeholder="password">
-	                <div *ngIf="passwordFormControl.invalid && passwordFormControl.dirty" class="form-text text-danger">
-	                    il campo deve essere valido
-	                </div>-->
+					<input type="password" [formControl]="rgPwordFControl" id="password" class="form-control"
+						placeholder="password">
+					<div *ngIf="rgPwordFControl.invalid && rgPwordFControl.dirty" class="form-text text-danger">
+						il campo deve essere valido
+					</div>
 				</div>
 				<button type="submit" class="btn btn-primary w-100 mt-3"
 					[disabled]="registerForm.invalid">Register</button>
