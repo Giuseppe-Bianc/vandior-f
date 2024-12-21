@@ -9,11 +9,13 @@ export class Utente {
 	) { }
 
 	static fromApiResponse(response: any): Utente {
-		return new Utente(
+		const utente = new Utente(
 			response.email,
 			response.token,
 			response.firstname,
 			response.lastname
 		);
+		utente.id = response.id;
+		return utente;
 	}
 }
